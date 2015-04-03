@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import { test } from 'ember-qunit';
+import { module, start, stop, test } from 'ember-qunit';
 import Pretender from 'pretender';
-import startApp from '../helpers/start-app';
+import startApp from 'ember-django-adapter/tests/helpers/start-app';
 
 var App;
 var store;
@@ -29,7 +29,7 @@ var posts = [
 ];
 
 module('CRUD Success', {
-  setup: function() {
+  beforeEach: function() {
     App = startApp();
 
     store = App.__container__.lookup('store:main');
@@ -66,7 +66,7 @@ module('CRUD Success', {
     });
   },
 
-  teardown: function() {
+  afterEach: function() {
     Ember.run(App, 'destroy');
     server.shutdown();
   }
@@ -78,43 +78,43 @@ module('CRUD Success', {
  *
  * https://stackoverflow.com/questions/26317855/ember-cli-how-to-do-asynchronous-model-unit-testing-with-restadapter
  */
-test('Retrieve list of non-paginated records', function() {
-  expect(4);
+test('Retrieve list of non-paginated records', function(assert) {
+  assert.expect(4);
 
   stop();
   Ember.run(function() {
     store.find('post').then(function(response) {
-      ok(response);
+      assert.ok(response);
 
-      equal(response.get('length'), 3);
+      assert.equal(response.get('length'), 3);
 
       var post = response.objectAt(2);
-      equal(post.get('postTitle'), 'post title 3');
-      equal(post.get('body'), 'post body 3');
+      assert.equal(post.get('postTitle'), 'post title 3');
+      assert.equal(post.get('body'), 'post body 3');
 
       start();
     });
   });
 });
 
-test('Retrieve single record', function() {
-  expect(3);
+test('Retrieve single record', function(assert) {
+  assert.expect(3);
 
   stop();
   Ember.run(function() {
     store.find('post', 1).then(function(response) {
-      ok(response);
+      assert.ok(response);
 
-      equal(response.get('postTitle'), 'post title 1');
-      equal(response.get('body'), 'post body 1');
+      assert.equal(response.get('postTitle'), 'post title 1');
+      assert.equal(response.get('body'), 'post body 1');
 
       start();
     });
   });
 });
 
-test('Create record', function() {
-  expect(4);
+test('Create record', function(assert) {
+  assert.expect(4);
 
   var record,
     data = {postTitle: 'post title 4', body: 'post body 4'};
@@ -123,19 +123,19 @@ test('Create record', function() {
   Ember.run(function() {
     record = store.createRecord('post', data);
     record.save().then(function(response) {
-      ok(response);
+      assert.ok(response);
 
-      equal(response.get('id'), 4);
-      equal(response.get('title'), data['title']);
-      equal(response.get('body'), data['body']);
+      assert.equal(response.get('id'), 4);
+      assert.equal(response.get('title'), data['title']);
+      assert.equal(response.get('body'), data['body']);
 
       start();
     });
   });
 });
 
-test('Update record', function() {
-  expect(7);
+test('Update record', function(assert) {
+  assert.expect(7);
 
   var postTitleUpdate = 'updated post title 1',
     bodyUpdate = 'updated post body 1';
@@ -143,19 +143,19 @@ test('Update record', function() {
   stop();
   Ember.run(function() {
     store.find('post', 1).then(function(response) {
-      ok(response);
+      assert.ok(response);
 
-      equal(response.get('isDirty'), false);
+      assert.equal(response.get('isDirty'), false);
       response.set('postTitle', postTitleUpdate);
       response.set('body', bodyUpdate);
-      equal(response.get('isDirty'), true);
+      assert.equal(response.get('isDirty'), true);
 
       response.save().then(function(updateResponse) {
-        ok(updateResponse);
+        assert.ok(updateResponse);
 
-        equal(updateResponse.get('isDirty'), false);
-        equal(updateResponse.get('postTitle'), postTitleUpdate);
-        equal(updateResponse.get('body'), bodyUpdate);
+        assert.equal(updateResponse.get('isDirty'), false);
+        assert.equal(updateResponse.get('postTitle'), postTitleUpdate);
+        assert.equal(updateResponse.get('body'), bodyUpdate);
 
         start();
       });
@@ -163,16 +163,16 @@ test('Update record', function() {
   });
 });
 
-test('Delete record', function() {
-  expect(2);
+test('Delete record', function(assert) {
+  assert.expect(2);
 
   stop();
   Ember.run(function() {
     store.find('post', 1).then(function(response) {
-      ok(response);
+      assert.ok(response);
 
       response.destroyRecord().then(function(deleteResponse) {
-        ok(deleteResponse);
+        assert.ok(deleteResponse);
 
         start();
       });
