@@ -19,7 +19,7 @@ module.exports = function(environment) {
 
       // The integration tests don't work with the API_HOST setting set
       // because Pretender doesn't work when a host set.
-      API_HOST: '',
+      API_HOST: 'asdfasdfasdf',
       API_NAMESPACE: 'test-api'
     }
   };

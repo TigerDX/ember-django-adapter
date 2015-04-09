@@ -5,9 +5,9 @@ import { moduleFor, test } from 'ember-qunit';
 moduleFor('adapter:application', 'DRFAdapter', {
   // The integration tests don't work with the host set so the host
   // setting is being overridden directly.
-  subject: function(options, factory) {
-    return factory.create({host: 'test-host'});
-  }
+  // subject: function(options, factory) {
+  //   return factory.create({host: 'test-host'});
+  // }
 });
 
 test('host config override', function(assert) {

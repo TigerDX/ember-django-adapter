@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import { module, start, stop, test } from 'ember-qunit';
 import Pretender from 'pretender';
-import startApp from 'ember-django-adapter/tests/helpers/start-app';
+import startApp from '../helpers/start-app';
 
 var App;
 var store;
