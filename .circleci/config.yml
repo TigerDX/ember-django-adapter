@@ -16,12 +16,12 @@ jobs:
           name: Test
           command: yarn test
 
-  deploy:
-    docker: circleci/python:2.7.15-stretch-node-browsers-legacy
-    steps:
-      - checkout      
-      - run: pip install mkdocs
-      - run: mkdocs gh-deploy
+#  deploy:
+#    docker: circleci/python:2.7.15-stretch-node-browsers-legacy
+#    steps:
+#      - checkout      
+#      - run: pip install mkdocs
+#      - run: mkdocs gh-deploy
      
 workflows:
   version: 2
