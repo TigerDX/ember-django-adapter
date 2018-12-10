@@ -1,22 +1,13 @@
-machine:
-  node:
-    version: 8
-  environment:
-    PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
+version: 2
 
-dependencies:
-  override:
-    - yarn install
-  cache_directories:
-    - ~/.cache/yarn
-
-deployment:
-  production:
-    branch: master
-    commands:
-      - sudo pip install mkdocs
-      - mkdocs gh-deploy
-
-test:
-  override:
-    - yarn test
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8.0
+      node:
+        version: 8
+      environment:
+        PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
+    steps:
+      - checkout
+      - run: echo "A first hello"
