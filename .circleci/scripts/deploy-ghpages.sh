@@ -36,7 +36,12 @@ else
 fi
 
 # copy over or recompile the new site
+echo "Copy sources here..."
+
 cp -r ../${siteSource} .
+
+echo "done."
+
 
 # stage any changes and new files
 git add -A
