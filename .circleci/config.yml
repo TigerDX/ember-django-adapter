@@ -20,7 +20,7 @@ jobs:
       - image: circleci/python:3.6.5
     working_directory: ~/circleci-docs-deploy
     steps:
-      #- checkout      
+      - checkout      
       #- run: sudo pip install mkdocs
       - run:
           command: pwd && ls -la
