@@ -18,11 +18,12 @@ jobs:
   deploy:
     docker:
       - image: circleci/python:3.6.5
+    working_directory: ~/circleci-docs-deploy
     steps:
       #- checkout      
       #- run: sudo pip install mkdocs
       - run:
-          command: {{ .Environment.CIRCLE_WORKING_DIRECTORY }}/.circleci/scripts/deploy-ghpages.sh build
+          command: ~/circleci-docs-deploy/.circleci/scripts/deploy-ghpages.sh build
       
 workflows:
   version: 2
