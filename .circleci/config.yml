@@ -12,9 +12,8 @@ jobs:
       - image: circleci/node:8-browsers
     steps:
       - checkout
-      - run:
-          name: Test
-          command: yarn test
+      - run: yarn install
+      - run: yarn test
 
 #  deploy:
 #    docker: circleci/python:2.7.15-stretch-node-browsers-legacy
