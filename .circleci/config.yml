@@ -21,7 +21,8 @@ jobs:
     steps:
       - checkout      
       - run: sudo pip install mkdocs
-      - command: mkdocs gh-deploy
+      - run:
+        command: mkdocs gh-deploy
       
 workflows:
   version: 2
