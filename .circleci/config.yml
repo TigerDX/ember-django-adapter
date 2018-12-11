@@ -21,11 +21,12 @@ jobs:
     working_directory: ~/circleci-docs-deploy
     steps:
       - checkout      
-      #- run: sudo pip install mkdocs
+      - run: sudo pip install mkdocs
+      - run: mkdocs build
       - run:
           command: pwd && ls -la
       - run:
-          command: ~/circleci-docs-deploy/.circleci/scripts/deploy-ghpages.sh docs
+          command: ~/circleci-docs-deploy/.circleci/scripts/deploy-ghpages.sh site
       
 workflows:
   version: 2
