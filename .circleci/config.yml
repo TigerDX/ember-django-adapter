@@ -20,7 +20,7 @@ jobs:
       - image: circleci/python:3.6.5
     steps:
       - checkout      
-      - run: pip install mkdocs
+      - run: sudo pip install mkdocs
       - run: mkdocs gh-deploy
       
 workflows:
