@@ -24,7 +24,7 @@ jobs:
       - checkout      
       - run: sudo pip install mkdocs
       - run:
-          command: mkdocs gh-deploy
+          command: ./scripts/deploy-ghpages.sh build
       
 workflows:
   version: 2
