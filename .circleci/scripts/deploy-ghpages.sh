@@ -23,6 +23,8 @@ git config --global user.name "$GH_NAME" > /dev/null 2>&1
 git init
 git remote add --fetch origin "$remote"
 
+echo "remote "${remote}
+
 echo "We are here "${PWD}
 ls -la ${PWD}
 
