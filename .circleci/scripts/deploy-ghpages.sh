@@ -46,7 +46,8 @@ echo "done."
 
 echo "Remove old files..."
 
-git diff --name-only --diff-filter=D -z | xargs -0 git rm --cached
+eval='git diff --name-only --diff-filter=D -z | xargs -0 git rm --cached'
+eval "$eval"
 
 echo "done."
 
