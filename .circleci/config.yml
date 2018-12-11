@@ -16,7 +16,8 @@ jobs:
       - run: yarn test
 
   deploy:
-    docker: circleci/python:2.7.15-stretch-node-browsers-legacy
+    docker:
+      - image: circleci/python:3.6.5
     steps:
       - checkout      
       - run: pip install mkdocs
