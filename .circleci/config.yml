@@ -24,7 +24,7 @@ jobs:
       - run: sudo pip install mkdocs
       - run: mkdocs build
       - run:
-          command: pwd && ls -la
+          command: pwd && ls -la site
       - run:
           command: ~/circleci-docs-deploy/.circleci/scripts/deploy-ghpages.sh site
       
