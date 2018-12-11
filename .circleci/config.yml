@@ -21,10 +21,7 @@ jobs:
     steps:
       - checkout      
       - run: sudo pip install mkdocs
-      - run:
-        name: Generate docs
-        command: |
-          mkdocs gh-deploy
+      - run: mkdocs gh-deploy
       
 workflows:
   version: 2
