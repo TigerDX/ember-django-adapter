@@ -32,7 +32,8 @@ then
     git checkout gh-pages
     # delete any old site as we are going to replace it
     # Note: this explodes if there aren't any, so moving it here for now
-    # git rm -rf ${PWD}/.
+    git rm -rf *
+    git status
 else
     git checkout --orphan gh-pages
 fi
@@ -46,7 +47,7 @@ ls -la ${PWD}
 echo "done."
 
 echo "Remove old files..."
-git diff --name-only --diff-filter=D -z
+#git diff --name-only --diff-filter=D -z
 
 #eval='git diff --name-only --diff-filter=D -z | xargs -0 git rm --cached'
 #eval "$eval"
