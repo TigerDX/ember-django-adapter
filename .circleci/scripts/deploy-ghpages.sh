@@ -11,6 +11,8 @@ set -e
 pwd
 remote=$(git config remote.origin.url)
 
+siteSource="$1"
+
 # make a directory to put the gp-pages branch
 mkdir gh-pages-branch
 cd gh-pages-branch
@@ -33,7 +35,7 @@ else
 fi
 
 # copy over or recompile the new site
-#cp -a "../${siteSource}/." .
+cp -a "../${siteSource}/." .
 
 # stage any changes and new files
 git add -A
