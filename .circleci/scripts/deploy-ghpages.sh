@@ -23,6 +23,7 @@ git config --global user.name "$GH_NAME" > /dev/null 2>&1
 git init
 git remote add --fetch origin "$remote"
 
+echo "We are here "${PWD}
 
 # switch into the the gh-pages branch
 if git rev-parse --verify origin/gh-pages > /dev/null 2>&1
