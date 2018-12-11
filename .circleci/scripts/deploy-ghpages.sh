@@ -40,7 +40,7 @@ fi
 # copy over or recompile the new site
 echo "Copy sources here..."
 
-cp -r ../${siteSource} .
+cp -r ../${siteSource}/ .
 ls -la ${PWD}
 
 echo "done."
