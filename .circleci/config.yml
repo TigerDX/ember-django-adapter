@@ -22,7 +22,7 @@ jobs:
       - checkout      
       - run: sudo pip install mkdocs
       - run:
-        name:Generate docs
+        name: Generate docs
         command: |
           mkdocs gh-deploy
       
