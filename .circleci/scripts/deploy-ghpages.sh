@@ -36,7 +36,7 @@ else
 fi
 
 # copy over or recompile the new site
-cp -av ../${siteSource}/. .
+cp -r ../${siteSource} .
 
 # stage any changes and new files
 git add -A
