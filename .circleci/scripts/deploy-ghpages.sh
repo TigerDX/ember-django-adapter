@@ -27,12 +27,12 @@ echo "We are here "${PWD}
 ls -la ${PWD}
 
 # switch into the the gh-pages branch
-if git rev-parse --verify origin/gh-pages > /dev/null 2>&1
+if git rev-parse --verify origin/gh-pages
 then
     git checkout gh-pages
     # delete any old site as we are going to replace it
     # Note: this explodes if there aren't any, so moving it here for now
-    git rm -rf ${PWD}/.
+    # git rm -rf ${PWD}/.
 else
     git checkout --orphan gh-pages
 fi
@@ -44,6 +44,11 @@ cp -r ../${siteSource} .
 
 echo "done."
 
+echo "Remove old files..."
+
+git diff --name-only --diff-filter=D -z | xargs -0 git rm --cached
+
+echo "done."
 
 # stage any changes and new files
 git add -A
