@@ -41,25 +41,27 @@ fi
 echo "Copy sources here..."
 
 cp -r ../${siteSource} .
+ls -la ${PWD}
 
 echo "done."
 
 echo "Remove old files..."
+git diff --name-only --diff-filter=D -z
 
-eval='git diff --name-only --diff-filter=D -z | xargs -0 git rm --cached'
-eval "$eval"
+#eval='git diff --name-only --diff-filter=D -z | xargs -0 git rm --cached'
+#eval "$eval"
 
 echo "done."
 
 # stage any changes and new files
-git add -A
+#git add -A
 # now commit, ignoring branch gh-pages doesn't seem to work, so trying skip
-git commit --allow-empty -m "Deploy to GitHub pages [ci skip]"
+#git commit --allow-empty -m "Deploy to GitHub pages [ci skip]"
 # and push, but send any output to /dev/null to hide anything sensitive
-git push --force --quiet origin gh-pages
+#git push --force --quiet origin gh-pages
 # go back to where we started and remove the gh-pages git repo we made and used
 # for deployment
-cd ..
-rm -rf gh-pages-branch
+#cd ..
+#rm -rf gh-pages-branch
 
 echo "Finished Deployment!"
