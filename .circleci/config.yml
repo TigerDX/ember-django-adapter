@@ -29,10 +29,7 @@ workflows:
   build_and_test_and_deploy:
     jobs:
       - deploy
-      - build
-      - test:
-          requires:
-            - build
+      - test
       - deploy:
           requires:
             - test
