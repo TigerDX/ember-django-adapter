@@ -36,14 +36,10 @@ workflows:
   build_and_test_and_deploy:
     jobs:
       - deploy
-#      - build
-#      - test:
-#          requires:
-#            - build
-#      - deploy:
-#          requires:
-#            - test
-#          filters:
-#            branches:
-#              only: circleci-20-test
-           
+      - build
+      - test:
+          requires:
+            - build
+      - deploy:
+          requires:
+            - test
