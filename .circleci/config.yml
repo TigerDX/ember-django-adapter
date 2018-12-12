@@ -20,6 +20,9 @@ jobs:
       - image: circleci/python:3.6.5
     working_directory: ~/circleci-docs-deploy
     steps:
+      - add_ssh_keys:
+        fingerprints:
+          - "97:58:f6:1f:13:70:34:95:6b:04:6b:2e:84:e4:43:ff"
       - checkout      
       - run: sudo pip install mkdocs
       - run: mkdocs build
