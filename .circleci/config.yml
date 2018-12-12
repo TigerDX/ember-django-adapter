@@ -1,12 +1,5 @@
 version: 2
 jobs:
-  build:
-    docker:
-      - image: circleci/node:8-browsers
-    steps:
-      - checkout
-      - run: yarn install
-      
   test:
     docker:
       - image: circleci/node:8-browsers
